@@ -98,27 +98,29 @@ var bass = {
 
 
 // Constructor 1
-function Car(make, model, color, needGas) {
-	this.make = make;
-	this.model = model;
-	this.color = color;
-	this.needGas = needGas;
-	this.fuel = function() {
-		this.needGas = false;
+function Car(name) {
+	this.name = name;
+	this.needGas = false;
+	this.trip = function() {
+		this.needGas = true;
+	};
+	this.drive = function(friend) {
+		friend.hasVehicle = true;
 	};
 }
 
-var bubba = new Car("honda", "civic", "silver", true);
+var car1 = new Car("bubba");
+var car2 = new Car("luther");
 
 
 // Constructor 2
-function Friend(location, age, gender, hasBeard) {
+function Friend(location, age, gender, hasVehicle) {
 	this.location = location;
 	this.age = age;
 	this.gender = gender;
-	this.hasBeard = hasBeard;
-	this.shave = function() {
-		this.hasBeard = false;
+	this.hasVehicle = hasVehicle;
+	this.drive = function(car) {
+		car.needGas = true;
 	};
 }
 
